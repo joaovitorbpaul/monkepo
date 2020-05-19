@@ -21,24 +21,43 @@ function fillPokemonImage(data) {
 }
 
 function fillPokemonInfo(data) {
-  const pokemonName = document.querySelector(".pokemon .info .name");
-  pokemonName.innerHTML = `#${data.id} - ${capitalize(data.name)}`;
+  const infoElement = document.querySelector(".pokemon .info");
+  infoElement.innerHTML = "";
+  createPokemonNameElement(data, infoElement);
   for (let statEl of data.stats) {
-    const statItem = document.querySelector(`#${statEl.stat.name}`);
-    statItem.innerHTML = statItem.innerHTML + statEl.base_stat;
+    createStatsElements(statEl, infoElement);
   }
   for (let index = 0; index < data.abilities.length; index++) {
-    const ability = document.createElement("p");
-    ability.id = "ability";
-    const attribute = document.createElement("span");
-    attribute.className = "attribute";
-    attribute.innerHTML = "ability:";
-    ability.innerHTML =
-      attribute.outerHTML + data.abilities[index].ability.name;
-    const infoElement = document.querySelector(`.pokemon .info`);
-    infoElement.innerHTML += ability.outerHTML;
+    createAbilitiesElements(data.abilities[index].ability, infoElement);
   }
   return data;
+}
+
+function createPokemonNameElement(data, infoElement) {
+  const pokemonName = document.createElement("h2");
+  pokemonName.className = "name";
+  pokemonName.innerHTML = `#${data.id} - ${capitalize(data.name)}`;
+  infoElement.appendChild(pokemonName);
+}
+
+function createStatsElements(statEl, infoElement) {
+  const statElement = document.createElement("p");
+  statElement.id = `#${statEl.stat.name}`;
+  const attribute = document.createElement("span");
+  attribute.className = "attribute";
+  attribute.innerHTML = `#${statEl.stat.name}:`;
+  statElement.innerHTML = attribute.outerHTML + statEl.base_stat;
+  infoElement.appendChild(statElement);
+}
+
+function createAbilitiesElements(data, infoElement) {
+  const ability = document.createElement("p");
+  ability.id = "ability";
+  const attribute = document.createElement("span");
+  attribute.className = "attribute";
+  attribute.innerHTML = "ability:";
+  ability.innerHTML = attribute.outerHTML + data.name;
+  infoElement.innerHTML += ability.outerHTML;
 }
 
 function capitalize(name) {
@@ -52,7 +71,7 @@ searchForm.addEventListener("submit", handleSearchPokemon);
 function handleSearchPokemon(event) {
   event.preventDefault();
   const pokemonName = document.querySelector(".input").value;
-  const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}`;
+  const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`;
   axios
     .get(url)
     .then((response) => response.data)
