@@ -114,6 +114,7 @@
     width: 100%;
   }
   .footer {
+    font-size: 1rem;
     position: relative;
     margin-top: 3rem;
   }
