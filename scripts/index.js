@@ -45,7 +45,7 @@ function createStatsElements(statEl, infoElement) {
   statElement.id = `#${statEl.stat.name}`;
   const attribute = document.createElement("span");
   attribute.className = "attribute";
-  attribute.innerHTML = `#${statEl.stat.name}:`;
+  attribute.innerHTML = `${statEl.stat.name}:`;
   statElement.innerHTML = attribute.outerHTML + statEl.base_stat;
   infoElement.appendChild(statElement);
 }
