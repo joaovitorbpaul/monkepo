@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Monkepo</title>
+  </head>
+  <body>
+    <form action="" class="search-form">
+      <input
+        type="text"
+        placeholder="Type a pokemon name or id"
+        class="input"
+        autofocus
+      />
+    </form>
+
+    <div class="container">
+      <div class="pokemon">
+        <div class="image"></div>
+        <div class="info">
+          <h2 class="name"></h2>
+          <p id="speed"><span class="attribute">speed:</span></p>
+          <p id="special-defense">
+            <span class="attribute">special-defense:</span>
+          </p>
+          <p id="special-attack">
+            <span class="attribute">special-attack:</span>
+          </p>
+          <p id="defense"><span class="attribute">defense:</span></p>
+          <p id="attack"><span class="attribute">attack:</span></p>
+          <p id="hp"><span class="attribute">hp:</span></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="scripts/index.js"></script>
+  </body>
+</html>
