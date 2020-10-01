@@ -20,7 +20,14 @@
   border-bottom: 0.5rem solid #333;
 }
 
-.input {
+.alert {
+  background-color: #ee4035;
+  color: #f3f3f3;
+  display: none;
+}
+
+.input,
+.alert {
   padding: 1rem;
   border: 0.5rem solid #333;
   border-radius: 15px;
