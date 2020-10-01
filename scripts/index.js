@@ -70,14 +70,16 @@ searchForm.addEventListener("submit", handleSearchPokemon);
 
 function handleSearchPokemon(event) {
   event.preventDefault();
+  debugger;
   const pokemonName = document.querySelector(".input").value;
+  if (pokemonName === "") return;
   const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`;
   axios
     .get(url)
     .then((response) => response.data)
     .then((data) => fillPokemonImage(data))
     .then((data) => fillPokemonInfo(data))
-    .catch((err) => popUpAlert());
+    .catch(() => popUpAlert());
   return;
 }
 
