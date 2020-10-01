@@ -29,7 +29,7 @@ const darkTheme = {
   fontColor: "#d3d3d3",
 };
 
-const toggleTheme = document.querySelector(".toggle-theme");
+const toggleTheme = document.querySelector(".switch-input");
 toggleTheme.addEventListener("change", ({ target }) => {
   target.checked ? changeTheme(darkTheme) : changeTheme(initialTheme);
 });
