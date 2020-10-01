@@ -77,6 +77,21 @@ function handleSearchPokemon(event) {
     .then((response) => response.data)
     .then((data) => fillPokemonImage(data))
     .then((data) => fillPokemonInfo(data))
-    .catch((err) => console.log(err));
+    .catch((err) => popUpAlert());
   return;
+}
+
+function popUpAlert() {
+  const input = document.querySelector(".input");
+  input.style.display = "none";
+  const alert = document.querySelector(".alert");
+  alert.style.display = "inline";
+  setTimeout(() => {
+    const input = document.querySelector(".input");
+    input.style.display = "inline";
+    input.value = "";
+    input.focus();
+    const alert = document.querySelector(".alert");
+    alert.style.display = "none";
+  }, 3000);
 }
